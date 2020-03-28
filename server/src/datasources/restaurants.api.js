@@ -3,20 +3,16 @@ const { RESTDataSource } = require('apollo-datasource-rest');
 class RestaurantsAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'https://localhost:1337/restaurants';
+    this.baseURL = 'http://31161975.ngrok.io/';
   }
-  async getRestaurantById({ id }) {
-    const response = await this.get('restaurants', { id: id });
-    return this.restaurantsReducer(response[0]);
+  async getRestaurantById(id) {
+    const response = await this.get(`restaurants/${id}`);
+    return response;
   }
-
-  restaurantsReducer(restaurant) {
-    return {
-      id: restaurant.id || 0,
-      name: restaurant.seriesName,
-      description: restaurant.description
-    };
-  }
+  async getRestaurantsList() {
+    const response = await this.get('restaurants');
+    return response;
+  };
 }
 
 module.exports = RestaurantsAPI;
