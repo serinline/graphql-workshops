@@ -7,3 +7,13 @@ module.exports = {
 		me: async (_, __, ___) => ___.models.User.me()
 	}
 };
+
+module.exports = {
+	Query: {
+	  restaurant: (_, { id }, { dataSources }) =>
+		dataSources.restaurants.getRestaurantById({id})
+		},
+	  restaurantsList: (_,{ dataSources }) =>
+		dataSources.restaurants.getRestaurantsList()
+  };
+  

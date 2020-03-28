@@ -49,3 +49,17 @@ module.exports = {
 	ApolloServer,
 	server
 };
+
+const resolvers = require('./resolvers');
+const RestaurantsAPI = require('./datasources/restaurants.api')
+const RestaurantsListAPI = require('./datasources/list.api')
+
+const server = new ApolloServer({
+	typeDefs,
+	resolvers,
+	dataSources: () => ({
+	  restaurantsAPI: new RestaurantsAPI(),
+	  restaurantsListAPI: new RestaurantsListAPI()
+	})
+  });
+  
