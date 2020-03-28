@@ -6,21 +6,21 @@ interface Restaurant {
     description: String
 }
 
-type restaurant_chain implements Restaurant {
+type Restaurant_chain implements Restaurant {
     id: String!
     name: String
     description: String
     type: [Types]
 } 
 
-type franchise implements Restaurant {
+type Franchise implements Restaurant {
     id: String!
     name: String
     description: String
     type: [Types]
 }
 
-type private_restaurant implements Restaurant {
+type Private_restaurant implements Restaurant {
     id: String!
     name: String
     description: String
